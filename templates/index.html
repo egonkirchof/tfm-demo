@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Predictor Precios de Vivienda</title>
+    
+<style>
+body {
+  background-color: linen;
+}
+
+h2 {
+  color: maroon;
+  margin-left: 40px;
+}
+
+div {
+  border-style: solid;
+
+}
+#principal { margin:20px; }
+
+
+</style>
+ 
+</head>
+ 
+<body>
+    
+    <div id=principal>
+    <h1>Predictor de valor de venta de viviendas</h1>
+    
+    <form name="predecir" action = "/predecir" method="POST" target="resultadoPred" enctype="multipart/form-data" >
+    
+    
+    <div id="basicos">
+    
+	    <h2>Datos básicos:</h2>
+	    <p><label>M2:</label>  <input type=text size=10 name="metros"><span>     </span>
+	    <label>Habitaciones:</label>  <input type=text size=10 name="habitaciones"><span>     </span>
+	    <label>Baños:</label>  <input type=text size=10 name="banos">
+	    </div>
+    
+    <div id="localidad">
+	    <h2>Districto:</h2>
+	       <select name="localidad" id="localidad">
+		  <option value="0">Ciudad Vieja</option>
+		  <option value="1">Corts</option>
+		  <option value="2">Eixample</option>
+		  <option value="3">Gracia</option>
+		  <option value="4">Horta</option>
+		  <option value="5">Nou barris</option>
+		  <option value="6">Plaza españa</option>
+		  <option value="7">San Martin</option>
+		  <option value="8">Sant Andreu</option>
+		  <option value="9">Sants</option>
+		  <option value="10">Sarria</option>
+       
+		</select>
+
+    </div>
+    
+    <div id="categoricas">
+    	<h2>Características:</h2>
+    	
+    		<table>
+    		<tr>
+    		<td>
+    		<input type="checkbox" name="antiVieja"><label>Antigüidad - Vieja</label><br>
+    		<input type="checkbox" name="emisionesMedia"><label>Emisiones - Media</label><br>
+    		<input type="checkbox" name="ascensor"><label>Ascensor</label><br>
+    		<input type="checkbox" name="blindada"><label>Puerta blindada</label><br>
+    		<input type="checkbox" name="cocinaequipada"><label>Cocina equipada</label><br>
+    		<input type="checkbox" name="parking"><label>Parking privado</label><br>
+    		<input type="checkbox" name="trastero"><label>Trastero</label><br>
+    		<input type="checkbox" name="terraza"><label>Terraza</label><br>
+    		</td>
+    		<td>
+    		<input type="checkbox" name="aire"><label>Aire acondicionado</label><br>
+    		<input type="checkbox" name="armarios"><label>Armarios</label><br>
+    		<input type="checkbox" name="lavadero"><label>Lavadero</label><br>
+    		<input type="checkbox" name="videoportero"><label>Videoportero</label><br>
+    		<input type="checkbox" name="cocinaoffice"><label>Cocina office</label><br>
+    		<input type="checkbox" name="patio"><label>Patio</label><br>
+    		<input type="checkbox" name="suite"><label>Suite con baño</label><br>
+    		<input type="checkbox" name="parquet"><label>Parquet</label><br>
+    		</td>
+    		</tr></table>
+       
+
+    	
+    	
+    </div>
+    
+    
+    <div id="descr">
+    	<h2>Descripción:</h2>
+    	<textarea id="descr" name="descr" rows="10" cols="50"></textarea>
+
+    
+    </div>
+    
+    <div id="imagen">
+    	<h2>Imagen:</h2>
+    	<input type="file" name="imagen">
+    	
+    </div>
+    
+    <div id="resultado">
+    	<iframe name="resultadoPred" height="64" width="640">
+    	</iframe>
+    </div>
+    
+    <input type=submit value="predecir!">
+    
+    </form>
+    
+    </div>
+ 
+<script  type="text/javascript" src="{{ url_for('static', filename='js/mainsu.js') }}"></script>
+ 
+</body>
+ 
+</html>
